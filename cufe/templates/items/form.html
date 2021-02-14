@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+
+{% block content %}
+{% load crispy_forms_tags %}
+{% if submitted %}
+<p class="text-danger">
+    تم إدخال بيانات النموذج بنجاح....يمكنك إدخال المزيد الآن أو الرجوع للصفحة الرئيسية بالضغط على زر إلغاء.
+</p>
+<br>
+{% endif %}
+
+{% crispy form %}
+{% endblock content %}

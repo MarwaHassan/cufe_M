@@ -1,0 +1,61 @@
+
+/*** ESSENTIAL STYLES ***/
+.sf-menu, .sf-menu * {
+	margin:			0;
+	list-style:		none;
+}
+.sf-menu ul {
+	position:		absolute;
+	top:			-999em;
+	background: #c78a3c;
+	border: 0;
+	padding: 7px 18px;
+}
+.sf-menu ul li {
+	padding: 0;
+	border: 0;
+}
+.sf-menu li:hover {
+	visibility:		inherit; /* fixes IE7 'sticky bug' */
+}
+.sf-menu li {
+	float:			left;
+	position:		relative;
+}
+.sf-menu a {
+	display:		block;
+	position:		relative;
+}
+.sf-menu li:hover ul,
+.sf-menu li.sfHover ul {
+   right:			-1px;
+	top:			46px; /* match top ul list item height */
+	z-index:		99;
+}
+ul.sf-menu li:hover li ul,
+ul.sf-menu li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li:hover ul,
+ul.sf-menu li li.sfHover ul {
+	left:			149px; /* match ul width */
+	top:			0;
+}
+ul.sf-menu li li:hover li ul,
+ul.sf-menu li li.sfHover li ul {
+	top:			-999em;
+}
+ul.sf-menu li li li:hover ul,
+ul.sf-menu li li li.sfHover ul {
+	left:			10em; /* match ul width */
+	top:			0;
+}
+.sf-menu ul li:last-child a {
+	border: 0;
+}
+.sf-menu ul li a {
+	font-size: 12px;
+	width: 130px;
+	line-height: 26px;
+	border-bottom: 1px solid #b57c33;
+}

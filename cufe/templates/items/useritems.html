@@ -1,0 +1,51 @@
+
+{% extends 'layout.html' %}
+
+{% block content %}
+<script type="text/javascript">
+<!--
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+</script>
+<div>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th style="text-align:center">الوثيقة</th>
+                <th style="text-align:center">إضافة</th>
+                <th style="text-align:center">المرفقات</th>
+                <th style="text-align:center">عرض محتوى</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in table %}
+            <tr>
+                <td><h3><mark>{{ r.ent_item_name }}</mark></h3></td>
+                <td style="text-align:center">
+                    {% if r.is_form %}
+                        <a href="/itemadd/{{ r.ent_item_id }}" class="btn btn-danger">ملئ نموذج</a>
+                    {% else %}
+                        <a href="/itemadd/{{ r.ent_item_id }}" class="btn btn-info">إضافة مرفق</a>
+                    {% endif %}
+                </td>
+                <td style="text-align:center">
+                    <a href="/fold/{{ ent_subpath }}/{{ r.fold_subpath }}" onclick="MM_openBrWindow('/fold/{{ ent_subpath }}/{{ r.fold_subpath }}','ملفات','scrollbars=yes,height=500'); return false;" class="btn btn-info">المرفقات</a>
+                </td>
+                <td style="text-align:center">
+                    {% if r.is_form %}
+                        <a href="/itementries/{{ r.ent_item_id }}" class="btn btn-primary">عرض محتوى</a>
+                    {% endif %}
+                </td>
+                <td style="text-align:center">
+                    <a href="/sendNotifications/{{ r.ent_item_id }}" class="btn btn-primary">  Hhhh  </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</div>
+{% endblock %}

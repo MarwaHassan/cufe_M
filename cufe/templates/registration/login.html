@@ -1,0 +1,110 @@
+<!-- templates/registration/login.html -->
+
+{% extends 'layout.html' %}
+
+
+{% load crispy_forms_tags %}
+{% block content %}
+
+<h1 class="text-center">بوابة الدخول</h1>
+<br>
+<br>
+<br>
+<!--div class="col-sm-2"></div-->
+<div class="class=" container text-center">
+<form class="form-horizontal" method="post">
+    {% csrf_token %}
+    <!--input type="input" class="form-control" name="username" id="inputEmail" placeholder="Username" required >
+    <input type="password" class="form-control" name="password" id="inputPass" placeholder="Password" required-->
+    
+    <div class="form-group row">
+
+        <label class="col-form-label col-lg-2 requiredField" for="{{ form.username.id_for_label }}">الاسم:</label>
+        <div class="col-lg-8">
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
+    </div>
+    <div class="form-group row">
+
+        <label class="col-form-label col-lg-2 requiredField" for="{{ form.password.id_for_label }}">كلمة المرور:</label>
+        <div class="col-lg-8">
+            {{ form.password }}
+            {{ form.password.errors }}
+        </div>
+    </div>
+    <div style="text-align:center">
+        <button type="submit" class="btn btn-primary" style="opacity: 1 !important;">دخول الموقع</button>
+    </div>
+</form>
+</div>
+
+
+<div class="col-sm-2"></div>
+<br>
+<a class="btn btn-link" href="/password_reset">تغيير كلمة المرور</a>
+{% endblock %}
+
+
+<form class="form-horizontal" method="post" enctype="multipart/form-data"><input type="hidden"
+                                                                                 name="csrfmiddlewaretoken"
+                                                                                 value="jZ8APlHA5KXZil1gKZdw8E1RLWHm6xxVi8Wbn21KFHQM5NaS5xMvFBNqpFq1bG2o">
+    <fieldset
+
+    ><input type="hidden"
+            name="ent_item"
+            value="1"
+
+
+    />
+        <div id="div_id_dept" class="form-group row"><label for="id_dept" class="col-form-label col-lg-2 requiredField">
+            القسم العلمي<span class="asteriskField">*</span> </label>
+            <div class="col-lg-8"><select name="dept" class="select form-control" required id="id_dept">
+                <option value="" selected>---------</option>
+                <option value="1">قسم هندسة الحاسبات</option>
+
+            </select></div>
+        </div>
+        <div id="div_id_degree" class="form-group row"><label for="id_degree"
+                                                              class="col-form-label col-lg-2 requiredField">
+            الدرجة العلمية<span class="asteriskField">*</span> </label>
+            <div class="col-lg-8"><select name="degree" class="select form-control" required id="id_degree">
+                <option value="" selected>---------</option>
+                <option value="1">أستاذ</option>
+                <option value="2">أستاذ متفرغ</option>
+                <option value="3">أستاذ مساعد</option>
+                <option value="4">أستاذ مساعد متفرغ</option>
+                <option value="5">مدرس</option>
+                <option value="6">مدرس متفرغ</option>
+                <option value="7">مدرس مساعد</option>
+                <option value="8">معيد</option>
+
+            </select></div>
+        </div>
+        <div id="div_id_contrib_cnt" class="form-group row"><label for="id_contrib_cnt"
+                                                                   class="col-form-label col-lg-2 requiredField">
+            عدد المساهمات<span class="asteriskField">*</span> </label>
+            <div class="col-lg-8"><input type="number" name="contrib_cnt" class="numberinput form-control" required
+                                         id="id_contrib_cnt"></div>
+        </div>
+        <div id="div_id_attachments" class="form-group row"><label for="id_attachments"
+                                                                   class="col-form-label col-lg-2 requiredField">
+            Attachments<span class="asteriskField">*</span> </label>
+            <div class="col-lg-8"><input type="file" name="attachments" class="clearablefileinput" required
+                                         id="id_attachments"></div>
+        </div>
+    </fieldset>
+    <div class="form-group row">
+        <div class="aab col-lg-2"></div>
+        <div class="col-lg-8"><input type="submit"
+                                     name="save"
+                                     value="إدخال"
+
+                                     class="btn btn-primary"
+                                     id="submit-id-save"
+
+
+        />
+            <a class="btn btn-primary" href="/">إلغاء</a></div>
+    </div>
+</form>

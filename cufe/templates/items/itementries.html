@@ -1,0 +1,59 @@
+
+{% extends 'layout.html' %}
+
+{% block content %}
+<script type="text/javascript">
+<!--
+
+function MM_openBrWindow(theURL,winName,features) { //v2.0
+  window.open(theURL,winName,features);
+}
+//-->
+
+</script>
+
+<div>
+    <!--input type="text" id="filterInput" onkeyup="filterTable()" placeholder="بحث..." /-->
+    <input type="text" id="filterInput" placeholder="بحث..." />
+</div>
+<div>
+    <table class="table table-hover" id="entriesTable">
+        <thead>
+            <tr>
+                {% for c in columns %}
+                    {% if forloop.counter == 1 %}
+                        <th style="text-align:center">تعديل</th>
+                    {% endif %}
+                    <th style="text-align:center">{{ c }}</th>
+                {% endfor %}
+            </tr>
+        </thead>
+        <tbody>
+            {% for r in table %}
+            <tr>
+                {% for c in r %}
+                    {% if forloop.counter == 1 %}
+                        <td style="text-align:center">
+                            {% if c > 0 %}
+                                <a href="/itemedit/{{ item_id }}/{{ c }}" class="btn btn-primary">تعديل</a>
+                            {% endif %}
+                        </td>
+                    {% elif forloop.counter == approv_column %}
+                            {% if c < 0 %}
+                                <td name="approv_button_cell"><a class="btn btn-primary approve_entry" data-id="/approventry/{{ item_id }}/{{ c }}">توثيق</a></td>
+                            {% else %}
+                                <td>{{ c }}</td>
+                            {% endif %}
+                    {% else %}
+                        <td>{{ c }}</td>
+                        <!--td style="text-align:center"><a href="/fold/{{ fold_subpath }}" onclick="MM_openBrWindow('/fold/{{ fold_subpath }}','ملفات','scrollbars=yes,height=500'); return false;" class="btn btn-primary">تحميل مرفقات</a></td-->
+                    {% endif %}
+
+                {% endfor %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
